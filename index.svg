@@ -626,52 +626,23 @@
 								bossZombie.svgEquiv.setAttribute("onmousedown", "");
 								clearInterval(bossZombie.stepTimer);
 								bossZombie = undefined;
-								winGame();
+								// Hide its Health Bar
+								document.getElementById("bossHealthBar").setAttribute("visibility", "hidden");
+								// Disable Minions
+								minionZombie1.svgEquiv.setAttribute("visibility", "hidden");
+								minionZombie1.svgEquiv.setAttribute("onmousedown", "");
+								clearInterval(minionZombie1.stepTimer);
+								minionZombie1 = undefined;
+								minionZombie2.svgEquiv.setAttribute("visibility", "hidden");
+								minionZombie2.svgEquiv.setAttribute("onmousedown", "");
+								clearInterval(minionZombie2.stepTimer);
+								minionZombie2 = undefined;
+								releaseLargeZombies();
 							}
 						}
 
-						function winGame() {
-							document.getElementById("bossHealthBar").setAttribute("visibility", "hidden");
-							// Hide Minions
-							if (minionZombie1 !== undefined) {
-								minionZombie1.svgEquiv.setAttribute("visibility", "hidden");
-							}
-							if (minionZombie2 !== undefined) {
-								minionZombie2.svgEquiv.setAttribute("visibility", "hidden");
-							}
-							// Hide Player
-							if (player !== undefined) {
-								player.svgEquiv.setAttribute("visibility", "hidden");
-							}
-							// Disable Minion onmousedown events
-							if (minionZombie1 !== undefined) {
-								minionZombie1.svgEquiv.setAttribute("onmousedown", "");
-							}
-							if (minionZombie2 !== undefined) {
-								minionZombie2.svgEquiv.setAttribute("onmousedown", "");
-							}
-							// Disable Keyboard Controls
-							document.onkeydown = function(event) {
-								void(0);
-							}
-							// Clear Minion Intervals :p
-							if (minionZombie1 !== undefined) {
-								clearInterval(minionZombie1.stepTimer);
-							}
-							if (minionZombie2 !== undefined) {
-								clearInterval(minionZombie2.stepTimer);
-							}
-							// Undefine Minions and Player
-							minionZombie1 = undefined;
-							minionZombie2 = undefined;
-							player = undefined;
-							// Hide Game Screen and show Winning Screen
-							document.getElementById("gameScene").setAttribute("visibility", "hidden");
-							document.getElementById("gameOver").setAttribute("visibility", "visible");
-							// Player wins
-							document.getElementById("gameOverWinText").setAttribute("visibility", "visible");
-							// Enable Restart Button
-							document.getElementById("gameOverRestart").setAttribute("onmousedown", "location.reload()");
+						function releaseLargeZombies() {
+							alert("More waves of Zombies will be coming soon!  Remember to check this game for updates regularly!");  // COMING SOON
 						}
 
 						bossZombie.svgEquiv.setAttribute("onmousedown", "bossZombie.loseHealth()");
