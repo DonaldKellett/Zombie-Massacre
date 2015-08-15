@@ -782,11 +782,11 @@
 	</g>
 	<g id="instructions" visibility="hidden">
 		<text x="300" y="100" style="font-Size: 50px; fill: red;">INSTRUCTIONS</text>
-		<text x="100" y="150" style="font-Size: 25px; fill: red;">1. Use the WASD keys to move around.</text>
-		<text x="100" y="200" style="font-Size: 25px; fill: red;">2. Avoid incoming zombies.  Do NOT touch them.</text>
-		<text x="100" y="250" style="font-Size: 25px; fill: red;">3. You should also shoot and kill them zombies by clicking on them.</text>
-		<text x="100" y="300" style="font-Size: 25px; fill: red;">4. Some zombies may take more than one hit to kill them.</text>
-		<text x="100" y="350" style="font-Size: 25px; fill: red;">5. In the end there is a BOSS.  Keep shooting it to kill it.  A health bar will show its health.</text>
+		<text x="100" y="150" style="font-Size: 25px; fill: red;">1. Use the WASD keys to move around.  Click on zombies to shoot them.</text>
+		<text x="100" y="200" style="font-Size: 25px; fill: red;">2. Most zombies will take more than one hit to kill them.</text>
+		<text x="100" y="250" style="font-Size: 25px; fill: red;">3. When a wave of zombies is defeated, the next wave will arrive.</text>
+		<text x="100" y="300" style="font-Size: 25px; fill: red;">4. A boss appears every third wave.  There are 9 waves in total (work in progress).</text>
+		<text x="100" y="350" style="font-Size: 25px; fill: red;">5. When fighting a boss, a health bar will accompany it to show its remaining health.</text>
 		<g id="proceed" onmousedown="init()">
 			<rect x="350" y="570" width="300" height="60" style="fill: url(#buttonGrad);"></rect>
 			<text x="375" y="610" style="font-Size: 20px; fill: black;">I UNDERSTAND, CONTINUE</text>
@@ -983,6 +983,20 @@
 			<rect x="200" y="50" width="600" height="50" style="stroke: black; opacity: 0.25;"></rect>
 			<rect x="200" y="50" width="600" height="50" style="stroke: black; fill: green;" id="actualBossHealth"></rect>
 		</g>
+		<g id="largeZombie1" visibility="hidden">
+	    <g id="largeZombie1Transform" transform="translate(0 0)">
+	      <circle cx="0" cy="0" r="75" style="fill: purple; stroke: black;"></circle>
+	      <circle cx="-22.5" cy="-33.75" r="15" style="fill: white; stroke: black;"></circle>
+	      <circle cx="22.5" cy="-33.75" r="15" style="fill: white; stroke: black;"></circle>
+	      <circle cx="-22.5" cy="-26.25" r="7.5" style="fill: black; stroke: black;">
+	        <animateTransform attributeName="transform" type="rotate" additive="sum" begin="0s" dur="2s" values="270 -22.5 -33.75; 450 -22.5 -33.75; 270 -22.5 -33.75" repeatCount="indefinite" />
+	      </circle>
+	      <circle cx="22.5" cy="-26.25" r="7.5" style="fill: black; stroke: black;">
+	        <animateTransform attributeName="transform" type="rotate" additive="sum" begin="0s" dur="2s" values="270 22.5 -33.75; 450 22.5 -33.75; 270 22.5 -33.75" repeatCount="indefinite" />
+	      </circle>
+	      <circle cx="0" cy="37.5" r="26.25" style="fill: red; stroke: black; stroke-width: 5;"></circle>
+	    </g>
+	  </g>
 	</g>
 	<g id="gameOver" visibility="hidden">
 		<text id="gameOverText" x="200" y="150" style="fill: red; font-Size: 100px;" visibility="hidden">GAME OVER</text>
