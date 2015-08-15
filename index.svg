@@ -1,9 +1,10 @@
 <svg xmlns="http://www.w3.org/2000/svg" xmlns:html="http://www.w3.org/1999/xhtml" width="1000" height="800" style="background-Color: black;">
 	<!--
-		Zombie Massacre
-		HKUST Summer Institute 2015 SISP 1305 Group 1 Project
+		Zombie Massacre - Official Game
+		Adapted from HKUST Summer Institute SISP 1305 Group 1 Project
 
-		(c) 2015 SISP 1305 Group 1.  All rights reserved.
+		(c) Donald Leung.  All rights reserved.
+		NOTE: ANYONE FOUND COPYING, MODIFYING AND/OR REDISTRIBUTING THIS GAME WITHOUT MY EXPLICIT PERMISSION WILL BE BROUGHT TO JUSTICE IN COURT AND MAY FACE IMPRISONMENT.
 	-->
 	<title>Zombie Massacre</title>
 	<script>
@@ -683,7 +684,57 @@
 						}
 
 						function releaseLargeZombies() {
-							alert("More waves of Zombies will be coming soon!  Remember to check this game for updates regularly!");  // COMING SOON
+							largeZombie1 = new Zombie(document.getElementById("largeZombie1"), -75, 400, 75, 5, 300);
+							largeZombie1.startPos();
+							largeZombie1.targetPlayer = function() {
+								largeZombie1.stepX = (player.x - largeZombie1.x) / largeZombie1.stepMoves;
+								largeZombie1.stepY = (player.y - largeZombie1.y) / largeZombie1.stepMoves;
+								largeZombie1.currentStepCount = 0;
+								largeZombie1.stepTimer = setTimeout(function() {
+									largeZombie1.move();
+								}, 10);
+							}
+							largeZombie1.move = function() {
+								largeZombie1.x += largeZombie1.stepX;
+								largeZombie1.y += largeZombie1.stepY;
+								largeZombie1.svgEquiv.setAttribute("transform", "translate("+largeZombie1.x+" "+largeZombie1.y+")");
+								largeZombie1.currentStepCount ++;
+								if (largeZombie1.currentStepCount < largeZombie1.stepMoves) {
+									largeZombie1.stepTimer = setTimeout(function() {
+										largeZombie1.move();
+									}, 10);
+								} else {
+									largeZombie1.stepTimer = setTimeout(function() {
+										largeZombie1.targetPlayer();
+									}, 10);
+								}
+								largeZombie1.detectCollisionWithPlayer();
+							}
+							largeZombie1.loseHealth = function() {
+								largeZombie1.health --;
+								document.getElementById("gunshotSFX").play();
+								if (largeZombie1.health <= 0) {
+									// Zombie dies.  Disable Zombie
+									largeZombie1.svgEquiv.setAttribute("visibility", "hidden");
+									largeZombie1.svgEquiv.setAttribute("onmousedown", "");
+									clearInterval(largeZombie1.stepTimer);
+									largeZombie1 = undefined;
+									largeZombiesLeft --;
+									checkLargeZombiesNum();
+								}
+							}
+
+							function checkLargeZombiesNum() {
+								if (largeZombiesLeft <= 0) {
+									releaseGigaZombies();
+								}
+							}
+							function releaseGigaZombies() {
+								alert("Wave 5 will be coming soon!  Remember to check this game regularly!");  // INCOMPLETE
+							}
+
+							largeZombie1.svgEquiv.setAttribute("onmousedown", "largeZombie1.loseHealth()");
+							largeZombie1.targetPlayer();
 						}
 
 						bossZombie.svgEquiv.setAttribute("onmousedown", "bossZombie.loseHealth()");
