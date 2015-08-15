@@ -14,6 +14,7 @@
 			var hardZombie1, hardZombie2, hardZombie3, hardZombie4, hardZombiesLeft = 4;
 			var minionZombie1, minionZombie2;
 			var bossZombie;
+			var largeZombie1, largeZombie2, largeZombie3, largeZombie4, largeZombiesLeft = 1;
 
 			function showInstructions() {
 				document.getElementById("startButton").setAttribute("onmousedown", "");
@@ -154,6 +155,18 @@
 							if (minionZombie2 !== undefined) {
 								minionZombie2.svgEquiv.setAttribute("visibility", "hidden");
 							}
+							if (largeZombie1 !== undefined) {
+								largeZombie1.svgEquiv.setAttribute("visibility", "hidden");
+							}
+							if (largeZombie2 !== undefined) {
+								largeZombie2.svgEquiv.setAttribute("visibility", "hidden");
+							}
+							if (largeZombie3 !== undefined) {
+								largeZombie3.svgEquiv.setAttribute("visibility", "hidden");
+							}
+							if (largeZombie4 !== undefined) {
+								largeZombie4.svgEquiv.setAttribute("visibility", "hidden");
+							}
 							// Hide Health Bar of Boss
 							document.getElementById("bossHealthBar").setAttribute("visibility", "hidden");
 							// Hide Player (of course :p)
@@ -194,6 +207,18 @@
 							if (minionZombie2 !== undefined) {
 								minionZombie2.svgEquiv.setAttribute("onmousedown", "");
 							}
+							if (largeZombie1 !== undefined) {
+								largeZombie1.svgEquiv.setAttribute("onmousedown", "");
+							}
+							if (largeZombie2 !== undefined) {
+								largeZombie2.svgEquiv.setAttribute("onmousedown", "");
+							}
+							if (largeZombie3 !== undefined) {
+								largeZombie3.svgEquiv.setAttribute("onmousedown", "");
+							}
+							if (largeZombie4 !== undefined) {
+								largeZombie4.svgEquiv.setAttribute("onmousedown", "");
+							}
 							// Disable Keyboard Controls
 							document.onkeydown = function(event) {
 								void(0);
@@ -232,6 +257,18 @@
 							if (minionZombie2 !== undefined) {
 								clearInterval(minionZombie2.stepTimer);
 							}
+							if (largeZombie1 !== undefined) {
+								clearInterval(largeZombie1.stepTimer);
+							}
+							if (largeZombie2 !== undefined) {
+								clearInterval(largeZombie2.stepTimer);
+							}
+							if (largeZombie3 !== undefined) {
+								clearInterval(largeZombie3.stepTimer);
+							}
+							if (largeZombie4 !== undefined) {
+								clearInterval(largeZombie4.stepTimer);
+							}
 							// Undefine Everything
 							normalZombie1 = undefined;
 							normalZombie2 = undefined;
@@ -244,6 +281,10 @@
 							bossZombie = undefined;
 							minionZombie1 = undefined;
 							minionZombie2 = undefined;
+							largeZombie1 = undefined;
+							largeZombie2 = undefined;
+							largeZombie3 = undefined;
+							largeZombie4 = undefined;
 							player = undefined;
 							// Hide Game Screen and show Game Over Screen
 							document.getElementById("gameScene").setAttribute("visibility", "hidden");
