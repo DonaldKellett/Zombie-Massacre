@@ -1128,7 +1128,14 @@
 											// Hide its Health Bar
 											document.getElementById("powerfulBossHealthBar").setAttribute("visibility", "hidden");
 											// Disable Large Minions
-											// CODE GOES HERE
+											largeMinionZombie1.svgEquiv.setAttribute("visibility", "hidden");
+											largeMinionZombie1.svgEquiv.setAttribute("onmousedown", "");
+											clearInterval(largeMinionZombie1.stepTimer);
+											largeMinionZombie1 = undefined;
+											largeMinionZombie2.svgEquiv.setAttribute("visibility", "hidden");
+											largeMinionZombie2.svgEquiv.setAttribute("onmousedown", "");
+											clearInterval(largeMinionZombie2.stepTimer);
+											largeMinionZombie2 = undefined;
 											releaseLeaderZombies();
 										}
 									}
@@ -1142,7 +1149,91 @@
 									document.getElementById("powerfulBossHealthBar").setAttribute("visibility", "visible");
 
 									powerfulBossZombie.summonLargeMinions = function() {
-										alert("Large Minions Summoned!");  // INCOMPLETE
+										largeMinionZombie1 = new Zombie(document.getElementById("largeMinionZombie1"), -75, 875, 75, 5, 300);
+										largeMinionZombie1.startPos();
+										largeMinionZombie1.targetPlayer = function() {
+											largeMinionZombie1.stepX = (player.x - largeMinionZombie1.x) / largeMinionZombie1.stepMoves;
+											largeMinionZombie1.stepY = (player.y - largeMinionZombie1.y) / largeMinionZombie1.stepMoves;
+											largeMinionZombie1.currentStepCount = 0;
+											largeMinionZombie1.stepTimer = setTimeout(function() {
+												largeMinionZombie1.move();
+											}, 10);
+										}
+										largeMinionZombie1.move = function() {
+											largeMinionZombie1.x += largeMinionZombie1.stepX;
+											largeMinionZombie1.y += largeMinionZombie1.stepY;
+											largeMinionZombie1.svgEquiv.setAttribute("transform", "translate("+largeMinionZombie1.x+" "+largeMinionZombie1.y+")");
+											largeMinionZombie1.currentStepCount ++;
+											if (largeMinionZombie1.currentStepCount < largeMinionZombie1.stepMoves) {
+												largeMinionZombie1.stepTimer = setTimeout(function() {
+													largeMinionZombie1.move();
+												}, 10);
+											} else {
+												largeMinionZombie1.stepTimer = setTimeout(function() {
+													largeMinionZombie1.targetPlayer();
+												}, 10);
+											}
+											largeMinionZombie1.detectCollisionWithPlayer();
+										}
+										largeMinionZombie1.loseHealth = function() {
+											largeMinionZombie1.health --;
+											document.getElementById("gunshotSFX").play();
+											if (largeMinionZombie1.health <= 0) {
+												// Minion Zombie Respawns
+												largeMinionZombie1.health = 5;
+												largeMinionZombie1.x = -75;
+												largeMinionZombie1.y = 875;
+												largeMinionZombie1.startPos();
+												clearInterval(largeMinionZombie1.stepTimer);
+												largeMinionZombie1.targetPlayer();
+											}
+										}
+
+										largeMinionZombie2 = new Zombie(document.getElementById("largeMinionZombie2"), 1075, 875, 75, 5, 300);
+										largeMinionZombie2.startPos();
+										largeMinionZombie2.targetPlayer = function() {
+											largeMinionZombie2.stepX = (player.x - largeMinionZombie2.x) / largeMinionZombie2.stepMoves;
+											largeMinionZombie2.stepY = (player.y - largeMinionZombie2.y) / largeMinionZombie2.stepMoves;
+											largeMinionZombie2.currentStepCount = 0;
+											largeMinionZombie2.stepTimer = setTimeout(function() {
+												largeMinionZombie2.move();
+											}, 10);
+										}
+										largeMinionZombie2.move = function() {
+											largeMinionZombie2.x += largeMinionZombie2.stepX;
+											largeMinionZombie2.y += largeMinionZombie2.stepY;
+											largeMinionZombie2.svgEquiv.setAttribute("transform", "translate("+largeMinionZombie2.x+" "+largeMinionZombie2.y+")");
+											largeMinionZombie2.currentStepCount ++;
+											if (largeMinionZombie2.currentStepCount < largeMinionZombie2.stepMoves) {
+												largeMinionZombie2.stepTimer = setTimeout(function() {
+													largeMinionZombie2.move();
+												}, 10);
+											} else {
+												largeMinionZombie2.stepTimer = setTimeout(function() {
+													largeMinionZombie2.targetPlayer();
+												}, 10);
+											}
+											largeMinionZombie2.detectCollisionWithPlayer();
+										}
+										largeMinionZombie2.loseHealth = function() {
+											largeMinionZombie2.health --;
+											document.getElementById("gunshotSFX").play();
+											if (largeMinionZombie2.health <= 0) {
+												// Minion Zombie Respawns
+												largeMinionZombie2.health = 5;
+												largeMinionZombie2.x = 1075;
+												largeMinionZombie2.y = 875;
+												largeMinionZombie2.startPos();
+												clearInterval(largeMinionZombie2.stepTimer);
+												largeMinionZombie2.targetPlayer();
+											}
+										}
+
+										largeMinionZombie1.svgEquiv.setAttribute("onmousedown", "largeMinionZombie1.loseHealth()");
+										largeMinionZombie1.targetPlayer();
+
+										largeMinionZombie2.svgEquiv.setAttribute("onmousedown", "largeMinionZombie2.loseHealth()");
+										largeMinionZombie2.targetPlayer();
 									}
 									powerfulBossZombie.summonLargeMinions();
 								}
