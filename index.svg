@@ -17,6 +17,7 @@
 			var bossZombie;
 			var largeZombie1, largeZombie2, largeZombie3, largeZombie4, largeZombiesLeft = 4;
 			var gigaZombie1, gigaZombie2, gigaZombie3, gigaZombie4, gigaZombiesLeft = 4;
+			var powerfulBossZombie, largeMinionZombie1, largeMinionZombie2;
 
 			function showInstructions() {
 				document.getElementById("startButton").setAttribute("onmousedown", "");
@@ -181,6 +182,15 @@
 							if (gigaZombie4 !== undefined) {
 								gigaZombie4.svgEquiv.setAttribute("visibility", "hidden");
 							}
+							if (powerfulBossZombie !== undefined) {
+								powerfulBossZombie.svgEquiv.setAttribute("visibility", "hidden");
+							}
+							if (largeMinionZombie1 !== undefined) {
+								largeMinionZombie1.svgEquiv.setAttribute("visibility", "hidden");
+							}
+							if (largeMinionZombie2 !== undefined) {
+								largeMinionZombie2.svgEquiv.setAttribute("visibility", "hidden");
+							}
 							// Hide Health Bar of Boss
 							document.getElementById("bossHealthBar").setAttribute("visibility", "hidden");
 							// Hide Player (of course :p)
@@ -245,6 +255,15 @@
 							if (gigaZombie4 !== undefined) {
 								gigaZombie4.svgEquiv.setAttribute("onmousedown", "");
 							}
+							if (powerfulBossZombie !== undefined) {
+								powerfulBossZombie.svgEquiv.setAttribute("onmousedown", "");
+							}
+							if (largeMinionZombie1 !== undefined) {
+								largeMinionZombie1.svgEquiv.setAttribute("onmousedown", "");
+							}
+							if (largeMinionZombie2 !== undefined) {
+								largeMinionZombie2.svgEquiv.setAttribute("onmousedown", "");
+							}
 							// Disable Keyboard Controls
 							document.onkeydown = function(event) {
 								void(0);
@@ -307,6 +326,15 @@
 							if (gigaZombie4 !== undefined) {
 								clearInterval(gigaZombie4.stepTimer);
 							}
+							if (powerfulBossZombie !== undefined) {
+								clearInterval(powerfulBossZombie.stepTimer);
+							}
+							if (largeMinionZombie1 !== undefined) {
+								clearInterval(largeMinionZombie1.stepTimer);
+							}
+							if (largeMinionZombie2 !== undefined) {
+								clearInterval(largeMinionZombie2.stepTimer);
+							}
 							// Undefine Everything
 							normalZombie1 = undefined;
 							normalZombie2 = undefined;
@@ -327,6 +355,9 @@
 							gigaZombie2 = undefined;
 							gigaZombie3 = undefined;
 							gigaZombie4 = undefined;
+							powerfulBossZombie = undefined;
+							largeMinionZombie1 = undefined;
+							largeMinionZombie2 = undefined;
 							player = undefined;
 							// Hide Game Screen and show Game Over Screen
 							document.getElementById("gameScene").setAttribute("visibility", "hidden");
@@ -1538,6 +1569,20 @@
 	  </g>
 		<g id="largeMinionZombie1" visibility="hidden">
 	    <g id="largeMinionZombie1Transform" transform="translate(0 0)">
+	      <circle cx="0" cy="0" r="75" style="fill: yellow; stroke: black;"></circle>
+	      <circle cx="-22.5" cy="-33.75" r="15" style="fill: white; stroke: black;"></circle>
+	      <circle cx="22.5" cy="-33.75" r="15" style="fill: white; stroke: black;"></circle>
+	      <circle cx="-22.5" cy="-26.25" r="7.5" style="fill: black; stroke: black;">
+	        <animateTransform attributeName="transform" type="rotate" additive="sum" begin="0s" dur="0.5s" values="180 -22.5 -33.75; 540 -22.5 -33.75" repeatCount="indefinite" />
+	      </circle>
+	      <circle cx="22.5" cy="-26.25" r="7.5" style="fill: black; stroke: black;">
+	        <animateTransform attributeName="transform" type="rotate" additive="sum" begin="0s" dur="0.5s" values="0 22.5 -33.75; 360 22.5 -33.75" repeatCount="indefinite" />
+	      </circle>
+	      <circle cx="0" cy="37.5" r="26.25" style="fill: red; stroke: black; stroke-width: 5;"></circle>
+	    </g>
+	  </g>
+		<g id="largeMinionZombie2" visibility="hidden">
+	    <g id="largeMinionZombie2Transform" transform="translate(0 0)">
 	      <circle cx="0" cy="0" r="75" style="fill: yellow; stroke: black;"></circle>
 	      <circle cx="-22.5" cy="-33.75" r="15" style="fill: white; stroke: black;"></circle>
 	      <circle cx="22.5" cy="-33.75" r="15" style="fill: white; stroke: black;"></circle>
