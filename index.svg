@@ -191,8 +191,9 @@
 							if (largeMinionZombie2 !== undefined) {
 								largeMinionZombie2.svgEquiv.setAttribute("visibility", "hidden");
 							}
-							// Hide Health Bar of Boss
+							// Hide Health Bar of All Bosses
 							document.getElementById("bossHealthBar").setAttribute("visibility", "hidden");
+							document.getElementById("powerfulBossHealthBar").setAttribute("visibility", "hidden");
 							// Hide Player (of course :p)
 							if (player !== undefined) {
 								player.svgEquiv.setAttribute("visibility", "hidden");
@@ -1088,7 +1089,62 @@
 									}
 								}
 								function releasePowerfulBoss() {
-									alert("The second boss of the game is coming soon!  Please remember to check this game regularly!");
+									powerfulBossZombie = new Zombie(document.getElementById("powerfulBossZombie"), 500, -200, 200, 150, 400);
+									powerfulBossZombie.startPos();
+									powerfulBossZombie.targetPlayer = function() {
+										powerfulBossZombie.stepX = (player.x - powerfulBossZombie.x) / powerfulBossZombie.stepMoves;
+										powerfulBossZombie.stepY = (player.y - powerfulBossZombie.y) / powerfulBossZombie.stepMoves;
+										powerfulBossZombie.currentStepCount = 0;
+										powerfulBossZombie.stepTimer = setTimeout(function() {
+											powerfulBossZombie.move();
+										}, 10);
+									}
+									powerfulBossZombie.move = function() {
+										powerfulBossZombie.x += powerfulBossZombie.stepX;
+										powerfulBossZombie.y += powerfulBossZombie.stepY;
+										powerfulBossZombie.svgEquiv.setAttribute("transform", "translate("+powerfulBossZombie.x+" "+powerfulBossZombie.y+")");
+										powerfulBossZombie.currentStepCount ++;
+										if (powerfulBossZombie.currentStepCount < powerfulBossZombie.stepMoves) {
+											powerfulBossZombie.stepTimer = setTimeout(function() {
+												powerfulBossZombie.move();
+											}, 10);
+										} else {
+											powerfulBossZombie.stepTimer = setTimeout(function() {
+												powerfulBossZombie.targetPlayer();
+											}, 10);
+										}
+										powerfulBossZombie.detectCollisionWithPlayer();
+									}
+									powerfulBossZombie.loseHealth = function() {
+										powerfulBossZombie.health --;
+										document.getElementById("gunshotSFX").play();
+										document.getElementById("actualPowerfulBossHealth").setAttribute("width", 4 * powerfulBossZombie.health);
+										if (powerfulBossZombie.health <= 0) {
+											// Zombie dies.  Disable Zombie
+											powerfulBossZombie.svgEquiv.setAttribute("visibility", "hidden");
+											powerfulBossZombie.svgEquiv.setAttribute("onmousedown", "");
+											clearInterval(powerfulBossZombie.stepTimer);
+											powerfulBossZombie = undefined;
+											// Hide its Health Bar
+											document.getElementById("powerfulBossHealthBar").setAttribute("visibility", "hidden");
+											// Disable Large Minions
+											// CODE GOES HERE
+											releaseLeaderZombies();
+										}
+									}
+
+									function releaseLeaderZombies() {
+										alert("Level 3 Wave 1 is coming soon!  Remember to check this game regularly!");  // INCOMPLETE
+									}
+
+									powerfulBossZombie.svgEquiv.setAttribute("onmousedown", "powerfulBossZombie.loseHealth()");
+									powerfulBossZombie.targetPlayer();
+									document.getElementById("powerfulBossHealthBar").setAttribute("visibility", "visible");
+
+									powerfulBossZombie.summonLargeMinions = function() {
+										alert("Large Minions Summoned!");  // INCOMPLETE
+									}
+									powerfulBossZombie.summonLargeMinions();
 								}
 
 								gigaZombie1.svgEquiv.setAttribute("onmousedown", "gigaZombie1.loseHealth()");
