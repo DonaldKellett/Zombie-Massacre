@@ -16,6 +16,7 @@
 			var minionZombie1, minionZombie2;
 			var bossZombie;
 			var largeZombie1, largeZombie2, largeZombie3, largeZombie4, largeZombiesLeft = 4;
+			var gigaZombie1, gigaZombie2, gigaZombie3, gigaZombie4, gigaZombiesLeft = 4;
 
 			function showInstructions() {
 				document.getElementById("startButton").setAttribute("onmousedown", "");
@@ -168,6 +169,18 @@
 							if (largeZombie4 !== undefined) {
 								largeZombie4.svgEquiv.setAttribute("visibility", "hidden");
 							}
+							if (gigaZombie1 !== undefined) {
+								gigaZombie1.svgEquiv.setAttribute("visibility", "hidden");
+							}
+							if (gigaZombie2 !== undefined) {
+								gigaZombie2.svgEquiv.setAttribute("visibility", "hidden");
+							}
+							if (gigaZombie3 !== undefined) {
+								gigaZombie3.svgEquiv.setAttribute("visibility", "hidden");
+							}
+							if (gigaZombie4 !== undefined) {
+								gigaZombie4.svgEquiv.setAttribute("visibility", "hidden");
+							}
 							// Hide Health Bar of Boss
 							document.getElementById("bossHealthBar").setAttribute("visibility", "hidden");
 							// Hide Player (of course :p)
@@ -220,6 +233,18 @@
 							if (largeZombie4 !== undefined) {
 								largeZombie4.svgEquiv.setAttribute("onmousedown", "");
 							}
+							if (gigaZombie1 !== undefined) {
+								gigaZombie1.svgEquiv.setAttribute("onmousedown", "");
+							}
+							if (gigaZombie2 !== undefined) {
+								gigaZombie2.svgEquiv.setAttribute("onmousedown", "");
+							}
+							if (gigaZombie3 !== undefined) {
+								gigaZombie3.svgEquiv.setAttribute("onmousedown", "");
+							}
+							if (gigaZombie4 !== undefined) {
+								gigaZombie4.svgEquiv.setAttribute("onmousedown", "");
+							}
 							// Disable Keyboard Controls
 							document.onkeydown = function(event) {
 								void(0);
@@ -270,6 +295,18 @@
 							if (largeZombie4 !== undefined) {
 								clearInterval(largeZombie4.stepTimer);
 							}
+							if (gigaZombie1 !== undefined) {
+								clearInterval(gigaZombie1.stepTimer);
+							}
+							if (gigaZombie2 !== undefined) {
+								clearInterval(gigaZombie2.stepTimer);
+							}
+							if (gigaZombie3 !== undefined) {
+								clearInterval(gigaZombie3.stepTimer);
+							}
+							if (gigaZombie4 !== undefined) {
+								clearInterval(gigaZombie4.stepTimer);
+							}
 							// Undefine Everything
 							normalZombie1 = undefined;
 							normalZombie2 = undefined;
@@ -286,6 +323,10 @@
 							largeZombie2 = undefined;
 							largeZombie3 = undefined;
 							largeZombie4 = undefined;
+							gigaZombie1 = undefined;
+							gigaZombie2 = undefined;
+							gigaZombie3 = undefined;
+							gigaZombie4 = undefined;
 							player = undefined;
 							// Hide Game Screen and show Game Over Screen
 							document.getElementById("gameScene").setAttribute("visibility", "hidden");
@@ -1258,6 +1299,62 @@
 	        <animateTransform attributeName="transform" type="rotate" additive="sum" begin="0s" dur="2s" values="270 22.5 -33.75; 450 22.5 -33.75; 270 22.5 -33.75" repeatCount="indefinite" />
 	      </circle>
 	      <circle cx="0" cy="37.5" r="26.25" style="fill: red; stroke: black; stroke-width: 5;"></circle>
+	    </g>
+	  </g>
+		<g id="gigaZombie1" visibility="hidden">
+	    <g id="gigaZombie1Transform" transform="translate(0 0)">
+	      <circle cx="0" cy="0" r="100" style="fill: brown; stroke: maroon;"></circle>
+	      <circle cx="-30" cy="-45" r="20" style="fill: white; stroke: black;"></circle>
+	      <circle cx="30" cy="-45" r="20" style="fill: white; stroke: black;"></circle>
+	      <circle cx="-30" cy="-35" r="10" style="fill: black; stroke: black;">
+	        <animateTransform attributeName="transform" type="rotate" additive="sum" begin="0s" dur="2s" values="270 -30 -45; 450 -30 -45; 270 -30 -45" repeatCount="indefinite" />
+	      </circle>
+	      <circle cx="30" cy="-35" r="10" style="fill: black; stroke: black;">
+	        <animateTransform attributeName="transform" type="rotate" additive="sum" begin="0s" dur="2s" values="270 30 -45; 450 30 -45; 270 30 -45" repeatCount="indefinite" />
+	      </circle>
+	      <circle cx="0" cy="50" r="35" style="fill: red; stroke: black; stroke-width: 5;"></circle>
+	    </g>
+	  </g>
+		<g id="gigaZombie2" visibility="hidden">
+	    <g id="gigaZombie2Transform" transform="translate(0 0)">
+	      <circle cx="0" cy="0" r="100" style="fill: brown; stroke: maroon;"></circle>
+	      <circle cx="-30" cy="-45" r="20" style="fill: white; stroke: black;"></circle>
+	      <circle cx="30" cy="-45" r="20" style="fill: white; stroke: black;"></circle>
+	      <circle cx="-30" cy="-35" r="10" style="fill: black; stroke: black;">
+	        <animateTransform attributeName="transform" type="rotate" additive="sum" begin="0s" dur="2s" values="270 -30 -45; 450 -30 -45; 270 -30 -45" repeatCount="indefinite" />
+	      </circle>
+	      <circle cx="30" cy="-35" r="10" style="fill: black; stroke: black;">
+	        <animateTransform attributeName="transform" type="rotate" additive="sum" begin="0s" dur="2s" values="270 30 -45; 450 30 -45; 270 30 -45" repeatCount="indefinite" />
+	      </circle>
+	      <circle cx="0" cy="50" r="35" style="fill: red; stroke: black; stroke-width: 5;"></circle>
+	    </g>
+	  </g>
+		<g id="gigaZombie3" visibility="hidden">
+	    <g id="gigaZombie3Transform" transform="translate(0 0)">
+	      <circle cx="0" cy="0" r="100" style="fill: brown; stroke: maroon;"></circle>
+	      <circle cx="-30" cy="-45" r="20" style="fill: white; stroke: black;"></circle>
+	      <circle cx="30" cy="-45" r="20" style="fill: white; stroke: black;"></circle>
+	      <circle cx="-30" cy="-35" r="10" style="fill: black; stroke: black;">
+	        <animateTransform attributeName="transform" type="rotate" additive="sum" begin="0s" dur="2s" values="270 -30 -45; 450 -30 -45; 270 -30 -45" repeatCount="indefinite" />
+	      </circle>
+	      <circle cx="30" cy="-35" r="10" style="fill: black; stroke: black;">
+	        <animateTransform attributeName="transform" type="rotate" additive="sum" begin="0s" dur="2s" values="270 30 -45; 450 30 -45; 270 30 -45" repeatCount="indefinite" />
+	      </circle>
+	      <circle cx="0" cy="50" r="35" style="fill: red; stroke: black; stroke-width: 5;"></circle>
+	    </g>
+	  </g>
+		<g id="gigaZombie4" visibility="hidden">
+	    <g id="gigaZombie4Transform" transform="translate(0 0)">
+	      <circle cx="0" cy="0" r="100" style="fill: brown; stroke: maroon;"></circle>
+	      <circle cx="-30" cy="-45" r="20" style="fill: white; stroke: black;"></circle>
+	      <circle cx="30" cy="-45" r="20" style="fill: white; stroke: black;"></circle>
+	      <circle cx="-30" cy="-35" r="10" style="fill: black; stroke: black;">
+	        <animateTransform attributeName="transform" type="rotate" additive="sum" begin="0s" dur="2s" values="270 -30 -45; 450 -30 -45; 270 -30 -45" repeatCount="indefinite" />
+	      </circle>
+	      <circle cx="30" cy="-35" r="10" style="fill: black; stroke: black;">
+	        <animateTransform attributeName="transform" type="rotate" additive="sum" begin="0s" dur="2s" values="270 30 -45; 450 30 -45; 270 30 -45" repeatCount="indefinite" />
+	      </circle>
+	      <circle cx="0" cy="50" r="35" style="fill: red; stroke: black; stroke-width: 5;"></circle>
 	    </g>
 	  </g>
 	</g>
