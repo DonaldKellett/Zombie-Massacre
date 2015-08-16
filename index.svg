@@ -1536,6 +1536,38 @@
 	      <circle cx="0" cy="50" r="35" style="fill: red; stroke: black; stroke-width: 5;"></circle>
 	    </g>
 	  </g>
+		<g id="largeMinionZombie1" visibility="hidden">
+	    <g id="largeMinionZombie1Transform" transform="translate(0 0)">
+	      <circle cx="0" cy="0" r="75" style="fill: yellow; stroke: black;"></circle>
+	      <circle cx="-22.5" cy="-33.75" r="15" style="fill: white; stroke: black;"></circle>
+	      <circle cx="22.5" cy="-33.75" r="15" style="fill: white; stroke: black;"></circle>
+	      <circle cx="-22.5" cy="-26.25" r="7.5" style="fill: black; stroke: black;">
+	        <animateTransform attributeName="transform" type="rotate" additive="sum" begin="0s" dur="0.5s" values="180 -22.5 -33.75; 540 -22.5 -33.75" repeatCount="indefinite" />
+	      </circle>
+	      <circle cx="22.5" cy="-26.25" r="7.5" style="fill: black; stroke: black;">
+	        <animateTransform attributeName="transform" type="rotate" additive="sum" begin="0s" dur="0.5s" values="0 22.5 -33.75; 360 22.5 -33.75" repeatCount="indefinite" />
+	      </circle>
+	      <circle cx="0" cy="37.5" r="26.25" style="fill: red; stroke: black; stroke-width: 5;"></circle>
+	    </g>
+	  </g>
+		<g id="powerfulBossZombie" visibility="hidden">
+	    <g id="powerfulBossZombieTransform" transform="translate(0 0)">
+	      <circle cx="0" cy="0" r="200" style="fill: brown; stroke: maroon;"></circle>
+	      <circle cx="-60" cy="-90" r="40" style="fill: green; stroke: black;"></circle>
+	      <circle cx="60" cy="-90" r="40" style="fill: green; stroke: black;"></circle>
+	      <circle cx="-60" cy="-70" r="20" style="fill: black; stroke: black;">
+	        <animateTransform attributeName="transform" type="rotate" additive="sum" begin="0s" dur="1s" values="0 -60 -90; 360 -60 -90" repeatCount="indefinite" />
+	      </circle>
+	      <circle cx="60" cy="-70" r="20" style="fill: black; stroke: black;">
+	        <animateTransform attributeName="transform" type="rotate" additive="sum" begin="0s" dur="1s" values="0 60 -90; 360 60 -90" repeatCount="indefinite" />
+	      </circle>
+	      <circle cx="0" cy="100" r="70" style="fill: black; stroke: black; stroke-width: 5;"></circle>
+	    </g>
+	  </g>
+		<g id="powerfulBossHealthBar" visibility="hidden">
+			<rect x="200" y="50" width="600" height="50" style="stroke: black; opacity: 0.25;"></rect>
+			<rect x="200" y="50" width="600" height="50" style="stroke: black; fill: brown;" id="actualPowerfulBossHealth"></rect>
+		</g>
 	</g>
 	<g id="gameOver" visibility="hidden">
 		<text id="gameOverText" x="200" y="150" style="fill: red; font-Size: 100px;" visibility="hidden">GAME OVER</text>
