@@ -18,6 +18,7 @@
 			var largeZombie1, largeZombie2, largeZombie3, largeZombie4, largeZombiesLeft = 4;
 			var gigaZombie1, gigaZombie2, gigaZombie3, gigaZombie4, gigaZombiesLeft = 4;
 			var powerfulBossZombie, largeMinionZombie1, largeMinionZombie2;
+			var leaderZombie1, leaderZombie2, followerZombie11, followerZombie12, followerZombie21, followerZombie22, leaderZombiesLeft = 2;
 
 			function showInstructions() {
 				document.getElementById("startButton").setAttribute("onmousedown", "");
@@ -191,6 +192,24 @@
 							if (largeMinionZombie2 !== undefined) {
 								largeMinionZombie2.svgEquiv.setAttribute("visibility", "hidden");
 							}
+							if (leaderZombie1 !== undefined) {
+								leaderZombie1.svgEquiv.setAttribute("visibility", "hidden");
+							}
+							if (leaderZombie2 !== undefined) {
+								leaderZombie2.svgEquiv.setAttribute("visibility", "hidden");
+							}
+							if (followerZombie11 !== undefined) {
+								followerZombie11.svgEquiv.setAttribute("visibility", "hidden");
+							}
+							if (followerZombie12 !== undefined) {
+								followerZombie12.svgEquiv.setAttribute("visibility", "hidden");
+							}
+							if (followerZombie21 !== undefined) {
+								followerZombie21.svgEquiv.setAttribute("visibility", "hidden");
+							}
+							if (followerZombie22 !== undefined) {
+								followerZombie22.svgEquiv.setAttribute("visibility", "hidden");
+							}
 							// Hide Health Bar of All Bosses
 							document.getElementById("bossHealthBar").setAttribute("visibility", "hidden");
 							document.getElementById("powerfulBossHealthBar").setAttribute("visibility", "hidden");
@@ -265,6 +284,24 @@
 							if (largeMinionZombie2 !== undefined) {
 								largeMinionZombie2.svgEquiv.setAttribute("onmousedown", "");
 							}
+							if (leaderZombie1 !== undefined) {
+								leaderZombie1.svgEquiv.setAttribute("onmousedown", "");
+							}
+							if (leaderZombie2 !== undefined) {
+								leaderZombie2.svgEquiv.setAttribute("onmousedown", "");
+							}
+							if (followerZombie11 !== undefined) {
+								followerZombie11.svgEquiv.setAttribute("onmousedown", "");
+							}
+							if (followerZombie12 !== undefined) {
+								followerZombie12.svgEquiv.setAttribute("onmousedown", "");
+							}
+							if (followerZombie21 !== undefined) {
+								followerZombie21.svgEquiv.setAttribute("onmousedown", "");
+							}
+							if (followerZombie22 !== undefined) {
+								followerZombie22.svgEquiv.setAttribute("onmousedown", "");
+							}
 							// Disable Keyboard Controls
 							document.onkeydown = function(event) {
 								void(0);
@@ -336,6 +373,24 @@
 							if (largeMinionZombie2 !== undefined) {
 								clearInterval(largeMinionZombie2.stepTimer);
 							}
+							if (leaderZombie1 !== undefined) {
+								clearInterval(leaderZombie1.stepTimer);
+							}
+							if (leaderZombie2 !== undefined) {
+								clearInterval(leaderZombie2.stepTimer);
+							}
+							if (followerZombie11 !== undefined) {
+								clearInterval(followerZombie11.stepTimer);
+							}
+							if (followerZombie12 !== undefined) {
+								clearInterval(followerZombie12.stepTimer);
+							}
+							if (followerZombie21 !== undefined) {
+								clearInterval(followerZombie21.stepTimer);
+							}
+							if (followerZombie22 !== undefined) {
+								clearInterval(followerZombie22.stepTimer);
+							}
 							// Undefine Everything
 							normalZombie1 = undefined;
 							normalZombie2 = undefined;
@@ -359,6 +414,12 @@
 							powerfulBossZombie = undefined;
 							largeMinionZombie1 = undefined;
 							largeMinionZombie2 = undefined;
+							leaderZombie1 = undefined;
+							leaderZombie2 = undefined;
+							followerZombie11 = undefined;
+							followerZombie12 = undefined;
+							followerZombie21 = undefined;
+							followerZombie22 = undefined;
 							player = undefined;
 							// Hide Game Screen and show Game Over Screen
 							document.getElementById("gameScene").setAttribute("visibility", "hidden");
@@ -1760,6 +1821,90 @@
 			<rect x="200" y="50" width="600" height="50" style="stroke: black; opacity: 0.25;"></rect>
 			<rect x="200" y="50" width="600" height="50" style="stroke: black; fill: brown;" id="actualPowerfulBossHealth"></rect>
 		</g>
+		<g id="leaderZombie1" visibility="hidden">
+	    <g id="leaderZombie1Transform" transform="translate(0 0)">
+	      <circle cx="0" cy="0" r="50" style="fill: pink; stroke: pink;"></circle>
+	      <circle cx="-15" cy="-22.5" r="10" style="fill: white; stroke: black;"></circle>
+	      <circle cx="15" cy="-22.5" r="10" style="fill: white; stroke: black;"></circle>
+	      <circle cx="-15" cy="-17.5" r="5" style="fill: black; stroke: black;">
+	        <animateTransform attributeName="transform" type="rotate" additive="sum" begin="0s" dur="2s" values="270 -15 -22.5; 450 -15 -22.5; 270 -15 -22.5" repeatCount="indefinite" />
+	      </circle>
+	      <circle cx="15" cy="-17.5" r="5" style="fill: black; stroke: black;">
+	        <animateTransform attributeName="transform" type="rotate" additive="sum" begin="0s" dur="2s" values="270 15 -22.5; 450 15 -22.5; 270 15 -22.5" repeatCount="indefinite" />
+	      </circle>
+	      <circle cx="0" cy="25" r="17.5" style="fill: red; stroke: black; stroke-width: 5;"></circle>
+	    </g>
+	  </g>
+		<g id="leaderZombie2" visibility="hidden">
+	    <g id="leaderZombie2Transform" transform="translate(0 0)">
+	      <circle cx="0" cy="0" r="50" style="fill: pink; stroke: pink;"></circle>
+	      <circle cx="-15" cy="-22.5" r="10" style="fill: white; stroke: black;"></circle>
+	      <circle cx="15" cy="-22.5" r="10" style="fill: white; stroke: black;"></circle>
+	      <circle cx="-15" cy="-17.5" r="5" style="fill: black; stroke: black;">
+	        <animateTransform attributeName="transform" type="rotate" additive="sum" begin="0s" dur="2s" values="270 -15 -22.5; 450 -15 -22.5; 270 -15 -22.5" repeatCount="indefinite" />
+	      </circle>
+	      <circle cx="15" cy="-17.5" r="5" style="fill: black; stroke: black;">
+	        <animateTransform attributeName="transform" type="rotate" additive="sum" begin="0s" dur="2s" values="270 15 -22.5; 450 15 -22.5; 270 15 -22.5" repeatCount="indefinite" />
+	      </circle>
+	      <circle cx="0" cy="25" r="17.5" style="fill: red; stroke: black; stroke-width: 5;"></circle>
+	    </g>
+	  </g>
+		<g id="followerZombie11" visibility="hidden">
+	    <g id="followerZombie11Transform" transform="translate(0 0)">
+	      <circle cx="0" cy="0" r="50" style="fill: pink; stroke: pink;"></circle>
+	      <circle cx="-15" cy="-22.5" r="10" style="fill: white; stroke: black;"></circle>
+	      <circle cx="15" cy="-22.5" r="10" style="fill: white; stroke: black;"></circle>
+	      <circle cx="-15" cy="-17.5" r="5" style="fill: black; stroke: black;">
+	        <animateTransform attributeName="transform" type="rotate" additive="sum" begin="0s" dur="0.5s" values="0 -15 -22.5; 360 -15 -22.5" repeatCount="indefinite" />
+	      </circle>
+	      <circle cx="15" cy="-17.5" r="5" style="fill: black; stroke: black;">
+	        <animateTransform attributeName="transform" type="rotate" additive="sum" begin="0s" dur="0.5s" values="180 15 -22.5; 540 15 -22.5" repeatCount="indefinite" />
+	      </circle>
+	      <circle cx="0" cy="25" r="17.5" style="fill: red; stroke: black; stroke-width: 5;"></circle>
+	    </g>
+	  </g>
+		<g id="followerZombie12" visibility="hidden">
+	    <g id="followerZombie12Transform" transform="translate(0 0)">
+	      <circle cx="0" cy="0" r="50" style="fill: pink; stroke: pink;"></circle>
+	      <circle cx="-15" cy="-22.5" r="10" style="fill: white; stroke: black;"></circle>
+	      <circle cx="15" cy="-22.5" r="10" style="fill: white; stroke: black;"></circle>
+	      <circle cx="-15" cy="-17.5" r="5" style="fill: black; stroke: black;">
+	        <animateTransform attributeName="transform" type="rotate" additive="sum" begin="0s" dur="0.5s" values="0 -15 -22.5; 360 -15 -22.5" repeatCount="indefinite" />
+	      </circle>
+	      <circle cx="15" cy="-17.5" r="5" style="fill: black; stroke: black;">
+	        <animateTransform attributeName="transform" type="rotate" additive="sum" begin="0s" dur="0.5s" values="180 15 -22.5; 540 15 -22.5" repeatCount="indefinite" />
+	      </circle>
+	      <circle cx="0" cy="25" r="17.5" style="fill: red; stroke: black; stroke-width: 5;"></circle>
+	    </g>
+	  </g>
+		<g id="followerZombie21" visibility="hidden">
+	    <g id="followerZombie21Transform" transform="translate(0 0)">
+	      <circle cx="0" cy="0" r="50" style="fill: pink; stroke: pink;"></circle>
+	      <circle cx="-15" cy="-22.5" r="10" style="fill: white; stroke: black;"></circle>
+	      <circle cx="15" cy="-22.5" r="10" style="fill: white; stroke: black;"></circle>
+	      <circle cx="-15" cy="-17.5" r="5" style="fill: black; stroke: black;">
+	        <animateTransform attributeName="transform" type="rotate" additive="sum" begin="0s" dur="0.5s" values="0 -15 -22.5; 360 -15 -22.5" repeatCount="indefinite" />
+	      </circle>
+	      <circle cx="15" cy="-17.5" r="5" style="fill: black; stroke: black;">
+	        <animateTransform attributeName="transform" type="rotate" additive="sum" begin="0s" dur="0.5s" values="180 15 -22.5; 540 15 -22.5" repeatCount="indefinite" />
+	      </circle>
+	      <circle cx="0" cy="25" r="17.5" style="fill: red; stroke: black; stroke-width: 5;"></circle>
+	    </g>
+	  </g>
+		<g id="followerZombie22" visibility="hidden">
+	    <g id="followerZombie22Transform" transform="translate(0 0)">
+	      <circle cx="0" cy="0" r="50" style="fill: pink; stroke: pink;"></circle>
+	      <circle cx="-15" cy="-22.5" r="10" style="fill: white; stroke: black;"></circle>
+	      <circle cx="15" cy="-22.5" r="10" style="fill: white; stroke: black;"></circle>
+	      <circle cx="-15" cy="-17.5" r="5" style="fill: black; stroke: black;">
+	        <animateTransform attributeName="transform" type="rotate" additive="sum" begin="0s" dur="0.5s" values="0 -15 -22.5; 360 -15 -22.5" repeatCount="indefinite" />
+	      </circle>
+	      <circle cx="15" cy="-17.5" r="5" style="fill: black; stroke: black;">
+	        <animateTransform attributeName="transform" type="rotate" additive="sum" begin="0s" dur="0.5s" values="180 15 -22.5; 540 15 -22.5" repeatCount="indefinite" />
+	      </circle>
+	      <circle cx="0" cy="25" r="17.5" style="fill: red; stroke: black; stroke-width: 5;"></circle>
+	    </g>
+	  </g>
 	</g>
 	<g id="gameOver" visibility="hidden">
 		<text id="gameOverText" x="200" y="150" style="fill: red; font-Size: 100px;" visibility="hidden">GAME OVER</text>
