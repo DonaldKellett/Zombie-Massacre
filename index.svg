@@ -1464,7 +1464,75 @@
 												}
 											}
 											function unleashFinalBoss() {
-												alert("The FINAL BOSS of this game is coming soon!  Remember to check this game regularly!");  // INCOMPLETE
+												// Show its health bar
+												document.getElementById("finalBossHealthBar").setAttribute("visibility", "visible");
+												// Define the Final Boss
+												finalBoss = new Zombie(document.getElementById("finalBoss"), 500, 0, 50, 600, 100);
+												finalBoss.startPos();
+												finalBoss.targetPlayer = function() {
+													finalBoss.stepX = (player.x - finalBoss.x) / finalBoss.stepMoves;
+													finalBoss.stepY = (player.y - finalBoss.y) / finalBoss.stepMoves;
+													finalBoss.currentStepCount = 0;
+													finalBoss.stepTimer = setTimeout(function() {
+														finalBoss.move();
+													}, 10);
+												}
+												finalBoss.move = function() {
+													finalBoss.x += finalBoss.stepX;
+													finalBoss.y += finalBoss.stepY;
+													finalBoss.svgEquiv.setAttribute("transform", "translate("+finalBoss.x+" "+finalBoss.y+")");
+													finalBoss.currentStepCount ++;
+													if (finalBoss.currentStepCount < finalBoss.stepMoves) {
+														finalBoss.stepTimer = setTimeout(function() {
+															finalBoss.move();
+														}, 10);
+													} else {
+														finalBoss.stepTimer = setTimeout(function() {
+															finalBoss.targetPlayer();
+														}, 10);
+													}
+													finalBoss.detectCollisionWithPlayer();
+												}
+												finalBoss.loseHealth = function() {
+													finalBoss.health --;
+													document.getElementById("gunshotSFX").play();
+													document.getElementById("actualFinalBossHealth").setAttribute("width", finalBoss.health);
+													if (finalBoss.health <= 0) {
+														// Zombie dies.  Disable Zombie
+														finalBoss.svgEquiv.setAttribute("visibility", "hidden");
+														finalBoss.svgEquiv.setAttribute("onmousedown", "");
+														clearInterval(finalBoss.stepTimer);
+														clearInterval(finalBoss.shieldTimer);
+														finalBoss = undefined;
+														// Hide its Health Bar
+														document.getElementById("finalBossHealthBar").setAttribute("visibility", "hidden");
+														winGame();
+													}
+												}
+												finalBoss.shieldTimer = function() {
+													void(0);
+												}
+												finalBoss.shieldDown = function() {
+													finalBoss.svgEquiv.setAttribute("opacity", "1");
+													finalBoss.svgEquiv.setAttribute("onmousedown", "finalBoss.loseHealth()");
+													finalBoss.shieldTimer = setTimeout(function() {
+														finalBoss.shieldUp();
+													}, 5000);
+												}
+												finalBoss.shieldUp = function() {
+													finalBoss.svgEquiv.setAttribute("opacity", "0.5");
+													finalBoss.svgEquiv.setAttribute("onmousedown", "");
+													finalBoss.shieldTimer = setTimeout(function() {
+														finalBoss.shieldDown();
+													}, 5000);
+												}
+
+												function winGame() {
+													alert("You Win!  A proper message will show up soon.");
+												}
+
+												finalBoss.targetPlayer();
+												finalBoss.shieldDown();
 											}
 
 											shieldZombie1.targetPlayer();
@@ -2404,7 +2472,7 @@
 	  </g>
 		<g id="finalBossHealthBar" visibility="hidden">
 			<rect x="200" y="50" width="600" height="50" style="stroke: black; opacity: 0.25;"></rect>
-			<rect x="200" y="50" width="600" height="50" style="stroke: black; fill: red;" id="actualfinalBossHealth"></rect>
+			<rect x="200" y="50" width="600" height="50" style="stroke: black; fill: red;" id="actualFinalBossHealth"></rect>
 		</g>
 	</g>
 	<g id="gameOver" visibility="hidden">
