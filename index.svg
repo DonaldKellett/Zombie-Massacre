@@ -2002,7 +2002,7 @@
 		<text x="100" y="150" style="font-Size: 25px; fill: red;">1. Use the WASD keys to move around.  Click on zombies to shoot them.</text>
 		<text x="100" y="200" style="font-Size: 25px; fill: red;">2. Most zombies will take more than one hit to kill them.</text>
 		<text x="100" y="250" style="font-Size: 25px; fill: red;">3. When a wave of zombies is defeated, the next wave will arrive.</text>
-		<text x="100" y="300" style="font-Size: 25px; fill: red;">4. A boss appears every third wave.  There are 9 waves in total (work in progress).</text>
+		<text x="100" y="300" style="font-Size: 25px; fill: red;">4. A boss appears every third wave.  There are 9 waves in total.</text>
 		<text x="100" y="350" style="font-Size: 25px; fill: red;">5. When fighting a boss, a health bar will accompany it to show its remaining health.</text>
 		<g id="proceed" onmousedown="init()">
 			<rect x="350" y="570" width="300" height="60" style="fill: url(#buttonGrad);"></rect>
