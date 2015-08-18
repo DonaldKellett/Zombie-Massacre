@@ -1528,7 +1528,21 @@
 												}
 
 												function winGame() {
-													alert("You Win!  A proper message will show up soon.");
+													// Disable and Hide Player
+													if (player !== undefined) {
+														player.svgEquiv.setAttribute("visibility", "hidden");
+													}
+													document.onkeydown = function(event) {
+														void(0);
+													}
+													player = undefined;
+													// Hide Game Screen and show Game Over Screen
+													document.getElementById("gameScene").setAttribute("visibility", "hidden");
+													document.getElementById("gameOver").setAttribute("visibility", "visible");
+													// Player wins :D
+													document.getElementById("gameOverWinText").setAttribute("visibility", "visible");
+													// Enable Restart Button
+													document.getElementById("gameOverRestart").setAttribute("onmousedown", "location.reload()");
 												}
 
 												finalBoss.targetPlayer();
