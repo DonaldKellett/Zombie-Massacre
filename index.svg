@@ -20,6 +20,7 @@
 			var powerfulBossZombie, largeMinionZombie1, largeMinionZombie2;
 			var leaderZombie1, leaderZombie2, followerZombie11, followerZombie12, followerZombie21, followerZombie22, leaderZombiesLeft = 2;
 			var shieldZombie1, shieldZombie2, shieldZombiesLeft = 2;
+			var finalBoss;
 
 			function showInstructions() {
 				document.getElementById("startButton").setAttribute("onmousedown", "");
@@ -217,9 +218,13 @@
 							if (shieldZombie2 !== undefined) {
 								shieldZombie2.svgEquiv.setAttribute("visibility", "hidden");
 							}
+							if (finalBoss !== undefined) {
+								finalBoss.svgEquiv.setAttribute("visibility", "hidden");
+							}
 							// Hide Health Bar of All Bosses
 							document.getElementById("bossHealthBar").setAttribute("visibility", "hidden");
 							document.getElementById("powerfulBossHealthBar").setAttribute("visibility", "hidden");
+							document.getElementById("finalBossHealthBar").setAttribute("visibility", "hidden");
 							// Hide Player (of course :p)
 							if (player !== undefined) {
 								player.svgEquiv.setAttribute("visibility", "hidden");
@@ -314,6 +319,9 @@
 							}
 							if (shieldZombie2 !== undefined) {
 								shieldZombie2.svgEquiv.setAttribute("onmousedown", "");
+							}
+							if (finalBoss !== undefined) {
+								finalBoss.svgEquiv.setAttribute("onmousedown", "");
 							}
 							// Disable Keyboard Controls
 							document.onkeydown = function(event) {
@@ -412,6 +420,10 @@
 								clearInterval(shieldZombie2.stepTimer);
 								clearInterval(shieldZombie2.shieldTimer);
 							}
+							if (finalBoss !== undefined) {
+								clearInterval(finalBoss.stepTimer);
+								clearInterval(finalBoss.shieldTimer);
+							}
 							// Undefine Everything
 							normalZombie1 = undefined;
 							normalZombie2 = undefined;
@@ -443,6 +455,7 @@
 							followerZombie22 = undefined;
 							shieldZombie1 = undefined;
 							shieldZombie2 = undefined;
+							finalBoss = undefined;
 							player = undefined;
 							// Hide Game Screen and show Game Over Screen
 							document.getElementById("gameScene").setAttribute("visibility", "hidden");
