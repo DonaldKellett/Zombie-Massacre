@@ -2375,6 +2375,24 @@
 	      <circle cx="0" cy="25" r="17.5" style="fill: red; stroke: black; stroke-width: 5;"></circle>
 	    </g>
 	  </g>
+		<g id="finalBoss" visibility="hidden">
+	    <g id="finalBossTransform" transform="translate(0 0)">
+	      <circle cx="0" cy="0" r="50" style="fill: rgb(5, 177, 255); stroke: black;"></circle>
+	      <circle cx="-15" cy="-22.5" r="10" style="fill: red; stroke: black;"></circle>
+	      <circle cx="15" cy="-22.5" r="10" style="fill: red; stroke: black;"></circle>
+	      <circle cx="-15" cy="-17.5" r="5" style="fill: black; stroke: black;">
+	        <animateTransform attributeName="transform" type="rotate" additive="sum" begin="0s" dur="1s" values="0 -15 -22.5; 360 -15 -22.5" repeatCount="indefinite" />
+	      </circle>
+	      <circle cx="15" cy="-17.5" r="5" style="fill: black; stroke: black;">
+	        <animateTransform attributeName="transform" type="rotate" additive="sum" begin="0s" dur="1s" values="0 15 -22.5; 360 15 -22.5" repeatCount="indefinite" />
+	      </circle>
+	      <circle cx="0" cy="25" r="17.5" style="fill: red; stroke: black; stroke-width: 2;"></circle>
+	    </g>
+	  </g>
+		<g id="finalBossHealthBar" visibility="hidden">
+			<rect x="200" y="50" width="600" height="50" style="stroke: black; opacity: 0.25;"></rect>
+			<rect x="200" y="50" width="600" height="50" style="stroke: black; fill: red;" id="actualfinalBossHealth"></rect>
+		</g>
 	</g>
 	<g id="gameOver" visibility="hidden">
 		<text id="gameOverText" x="200" y="150" style="fill: red; font-Size: 100px;" visibility="hidden">GAME OVER</text>
