@@ -1329,7 +1329,136 @@
 											}
 										}
 										function releaseShieldZombies() {
-											alert("Level 3 Wave 2 is coming soon!  Remember to check this game regularly!"); // INCOMPLETE
+											shieldZombie1 = new Zombie(document.getElementById("shieldZombie1"), 0, 400, 50, 20, 175);
+											shieldZombie1.startPos();
+											shieldZombie1.targetPlayer = function() {
+												shieldZombie1.stepX = (player.x - shieldZombie1.x) / shieldZombie1.stepMoves;
+												shieldZombie1.stepY = (player.y - shieldZombie1.y) / shieldZombie1.stepMoves;
+												shieldZombie1.currentStepCount = 0;
+												shieldZombie1.stepTimer = setTimeout(function() {
+													shieldZombie1.move();
+												}, 10);
+											}
+											shieldZombie1.move = function() {
+												shieldZombie1.x += shieldZombie1.stepX;
+												shieldZombie1.y += shieldZombie1.stepY;
+												shieldZombie1.svgEquiv.setAttribute("transform", "translate("+shieldZombie1.x+" "+shieldZombie1.y+")");
+												shieldZombie1.currentStepCount ++;
+												if (shieldZombie1.currentStepCount < shieldZombie1.stepMoves) {
+													shieldZombie1.stepTimer = setTimeout(function() {
+														shieldZombie1.move();
+													}, 10);
+												} else {
+													shieldZombie1.stepTimer = setTimeout(function() {
+														shieldZombie1.targetPlayer();
+													}, 10);
+												}
+												shieldZombie1.detectCollisionWithPlayer();
+											}
+											shieldZombie1.loseHealth = function() {
+												shieldZombie1.health --;
+												document.getElementById("gunshotSFX").play();
+												if (shieldZombie1.health <= 0) {
+													// Zombie dies.  Disable Zombie
+													shieldZombie1.svgEquiv.setAttribute("visibility", "hidden");
+													shieldZombie1.svgEquiv.setAttribute("onmousedown", "");
+													clearInterval(shieldZombie1.stepTimer);
+													clearInterval(shieldZombie1.shieldTimer);
+													shieldZombie1 = undefined;
+													shieldZombiesLeft --;
+													checkShieldZombiesNum();
+												}
+											}
+											shieldZombie1.shieldTimer = function() {
+												void(0);
+											}
+											shieldZombie1.shieldDown = function() {
+												shieldZombie1.svgEquiv.setAttribute("opacity", "1");
+												shieldZombie1.svgEquiv.setAttribute("onmousedown", "shieldZombie1.loseHealth()");
+												shieldZombie1.shieldTimer = setTimeout(function() {
+													shieldZombie1.shieldUp();
+												}, 4000);
+											}
+											shieldZombie1.shieldUp = function() {
+												shieldZombie1.svgEquiv.setAttribute("opacity", "0.5");
+												shieldZombie1.svgEquiv.setAttribute("onmousedown", "");
+												shieldZombie1.shieldTimer = setTimeout(function() {
+													shieldZombie1.shieldDown();
+												}, 2000);
+											}
+
+											shieldZombie2 = new Zombie(document.getElementById("shieldZombie2"), 1000, 400, 50, 20, 175);
+											shieldZombie2.startPos();
+											shieldZombie2.targetPlayer = function() {
+												shieldZombie2.stepX = (player.x - shieldZombie2.x) / shieldZombie2.stepMoves;
+												shieldZombie2.stepY = (player.y - shieldZombie2.y) / shieldZombie2.stepMoves;
+												shieldZombie2.currentStepCount = 0;
+												shieldZombie2.stepTimer = setTimeout(function() {
+													shieldZombie2.move();
+												}, 10);
+											}
+											shieldZombie2.move = function() {
+												shieldZombie2.x += shieldZombie2.stepX;
+												shieldZombie2.y += shieldZombie2.stepY;
+												shieldZombie2.svgEquiv.setAttribute("transform", "translate("+shieldZombie2.x+" "+shieldZombie2.y+")");
+												shieldZombie2.currentStepCount ++;
+												if (shieldZombie2.currentStepCount < shieldZombie2.stepMoves) {
+													shieldZombie2.stepTimer = setTimeout(function() {
+														shieldZombie2.move();
+													}, 10);
+												} else {
+													shieldZombie2.stepTimer = setTimeout(function() {
+														shieldZombie2.targetPlayer();
+													}, 10);
+												}
+												shieldZombie2.detectCollisionWithPlayer();
+											}
+											shieldZombie2.loseHealth = function() {
+												shieldZombie2.health --;
+												document.getElementById("gunshotSFX").play();
+												if (shieldZombie2.health <= 0) {
+													// Zombie dies.  Disable Zombie
+													shieldZombie2.svgEquiv.setAttribute("visibility", "hidden");
+													shieldZombie2.svgEquiv.setAttribute("onmousedown", "");
+													clearInterval(shieldZombie2.stepTimer);
+													clearInterval(shieldZombie2.shieldTimer);
+													shieldZombie2 = undefined;
+													shieldZombiesLeft --;
+													checkShieldZombiesNum();
+												}
+											}
+											shieldZombie2.shieldTimer = function() {
+												void(0);
+											}
+											shieldZombie2.shieldDown = function() {
+												shieldZombie2.svgEquiv.setAttribute("opacity", "1");
+												shieldZombie2.svgEquiv.setAttribute("onmousedown", "shieldZombie2.loseHealth()");
+												shieldZombie2.shieldTimer = setTimeout(function() {
+													shieldZombie2.shieldUp();
+												}, 4000);
+											}
+											shieldZombie2.shieldUp = function() {
+												shieldZombie2.svgEquiv.setAttribute("opacity", "0.5");
+												shieldZombie2.svgEquiv.setAttribute("onmousedown", "");
+												shieldZombie2.shieldTimer = setTimeout(function() {
+													shieldZombie2.shieldDown();
+												}, 2000);
+											}
+
+											function checkShieldZombiesNum() {
+												if (shieldZombiesLeft <= 0) {
+													unleashFinalBoss();
+												}
+											}
+											function unleashFinalBoss() {
+												alert("The FINAL BOSS of this game is coming soon!  Remember to check this game regularly!");  // INCOMPLETE
+											}
+
+											shieldZombie1.targetPlayer();
+											shieldZombie1.shieldDown();
+
+											shieldZombie2.targetPlayer();
+											shieldZombie2.shieldDown();
 										}
 
 										leaderZombie1.svgEquiv.setAttribute("onmousedown", "leaderZombie1.loseHealth()");
